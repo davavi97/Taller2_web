@@ -55,19 +55,39 @@ const products = [
     
       newProduct.innerHTML = `
       <img class="product__img" src="${elem.img}" alt="">
-      <div class="product__info">
         <h3 class="product__title">${elem.title}</h3>
         <p class="product__price">$ ${elem.price}</p>
-      </div>
+        <button> Eliminar </button>
+  
       `;
     
       productsList.appendChild(newProduct);
     });
   }
   
+//LEER DE FIRESTORE, visble
+var objets=[];
+  function getProducts(){
+   
+    db.collection("products").get().then((querySnapshot) => {
+      objets.splice(0, objets.length);
+      querySnapshot.forEach((doc) => {
+          const obj =doc.data();
+          obj.id = obj.id;
+          objets.push(obj);
+          console.log(`${doc.id} => ${doc.data()}`);
+      });
+      renderProducts(objets);
+
+
+  });
+
+  }
+
+  getProducts();
   
   // render inicial con todos los productos
-  renderProducts(products);
+  //renderProducts(products);
   
   
   const filterBtn = document.querySelector('.filterbtn');
@@ -111,27 +131,11 @@ const products = [
         console.error("Error adding document: ", error);
     });
   
-
+    getProducts();
     //products.push(newProduct);
-    renderProducts(products);
+    //renderProducts(products);
 
   
  
   });
   
-
-   /*
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-  
-    const newProduct = {
-      title: form.title.value,
-      img: form.image.value,
-      price: form.price.value
-    };
- 
-    products.push(newProduct);
-  
-    renderProducts(products);
-  });
-   */
