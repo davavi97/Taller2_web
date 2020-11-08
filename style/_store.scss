@@ -1,0 +1,55 @@
+  .product{
+
+    width: 20%;
+    margin: 10px;
+    position: relative;
+    text-align: center;
+    
+
+    &__img{
+        border-radius: 1px;
+
+
+        &__addBtn{
+            position: absolute;
+            right: 7px;
+            bottom: 5px;
+        }
+
+    }
+
+    &__title{
+        font-weight: 200;
+        font-size: 17px;
+        margin-top: 0px;
+    
+    }
+
+    &__price{
+        font-size: 15px;
+        font-weight: 200;
+       
+
+    }
+}
+  
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 30px;
+    margin-top: 30px;
+  
+    &__title {
+      margin-top: 0;
+    }
+  
+    &__label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+  }

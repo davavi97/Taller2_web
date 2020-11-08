@@ -1,0 +1,135 @@
+$textColor: #404040;
+$fontFamiliy:Poppins;
+$fontweight:600;
+$font-style: normal;
+$font-size: 14px;
+$line-height: 17px;
+$pixel2Max:411px;
+
+//PhoneWidth
+$phoneWidth:412px;
+
+.header{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: center;
+    padding-top:30px;
+
+    .mainheader__btn{
+        display: none;
+
+    }
+    
+   
+    .header__nav{
+        color: $textColor;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: flex-start;
+        align-items: center;
+        
+        
+        .nav__home{
+            font-weight: $fontweight;
+            color: #8AA093;
+            text-decoration: none;
+        }
+        p{
+            font-size: $font-size;
+            padding-left: 40px;
+        }
+        
+        
+    }
+    .header__cartSearch{
+        img{
+            padding-right: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 412px){
+    
+    .header{
+        font-family: $fontFamiliy;
+        font-style: $font-style;
+        font-weight: $fontweight;
+        font-size: $font-size;
+        line-height: $line-height;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-content: flex-start;
+        align-items: flex-start;
+        
+        color: #FFFFFF;
+        
+        width: 100%;
+        
+        .mainheader__btn{
+            color:#FFFFFF;
+            top:20px;
+            margin-top:25px;
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .header__lavandaLogo{
+            margin-top:20px;
+        }
+        
+        .header__nav{
+            font-family: $fontFamiliy;
+            font-style: $font-style;
+            font-weight: $fontweight;
+            font-size: $font-size;
+            line-height: $line-height;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-content: flex-start;
+            align-items: flex-start;
+            position: absolute;
+            opacity: 0;
+            flex-direction: column;
+            pointer-events: none;
+            transform: translate(-100%, 0%);
+            
+            .nav__home{
+                text-decoration: none;
+                color: #FFFFFF;
+            }
+        }
+        
+        .header__nav--active{
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(0%, 0%);
+            background: rgba(51, 52, 53, 0.6);
+            backdrop-filter: blur(4px);
+            height: 180px;
+            top: 0;
+            z-index: 1;
+            width: 250px;
+            margin-left:-80px;
+        }
+        
+        .cartSearch__cart{
+            display: none;
+        }
+
+        .cartSearch__search{
+            margin-top:25px;
+        }
+        
+        
+    }
+}
+
