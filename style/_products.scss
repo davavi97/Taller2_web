@@ -33,14 +33,27 @@
     }
 }
 
-form{
+.form{
     display: flex;
     flex-direction: column;
     width: 400px;
-s
-    label{
+    border: 1px solid rgba($color: #C4C4C4, $alpha: 0.8);
+    border-radius: 5px;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 500px;
+
+    &__title{
+        margin-top: 0;
+ 
+
+    }
+
+
+    &__label{
         display: flex;
         flex-direction: column;
+   
     }
 
 
