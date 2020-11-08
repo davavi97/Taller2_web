@@ -1,3 +1,24 @@
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDrJkH0hSZ0s2AvGT-H8Ja9a2NPmHrIqHQ",
+    authDomain: "taller2-web.firebaseapp.com",
+    databaseURL: "https://taller2-web.firebaseio.com",
+    projectId: "taller2-web",
+    storageBucket: "taller2-web.appspot.com",
+    messagingSenderId: "838195254932",
+    appId: "1:838195254932:web:20f39ebdecfe375ff9c681",
+    measurementId: "G-WGH7G5D0FF"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  //REFERENCIA DEL FIREBASE
+  var db = firebase.firestore();
+
+
+
+
 const products = [
     {
       title: 'Pachira, árbol del dinero',
@@ -70,7 +91,7 @@ const products = [
   
   
   
- 
+ //Aqui es donde agregamos el producto
   const form = document.querySelector('.form');
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -82,7 +103,16 @@ const products = [
       price: form.price.value
     };
 
-    products.push(newProduct);
+    db.collection("products").add(newProduct)
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+  
+
+    //products.push(newProduct);
     renderProducts(products);
 
   
