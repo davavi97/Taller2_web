@@ -9,7 +9,7 @@
     
 
     &__img{
-        border-radius: 1px;
+        border-radius: 50px;
 
 
         &__addBtn{
@@ -32,3 +32,17 @@
 
     }
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+s
+    label{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+

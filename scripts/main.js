@@ -69,7 +69,7 @@ const products = [
   
   
   
-  
+  /*
   const form = document.querySelector('.form');
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -79,8 +79,9 @@ const products = [
       img: form.image.value,
       price: form.price.value
     };
-  
+ 
     products.push(newProduct);
   
     renderProducts(products);
   });
+   */
