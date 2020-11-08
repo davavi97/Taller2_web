@@ -45,23 +45,27 @@
 
     <button class="filterbtn">Filtrar</button>
        <!-- formulario aquí -->
-    <form class="form" action="">
+    <form class="form" action="" method="">
         <h2 class="form__title">Nuevo producto</h2>
         <label class=" form__label"> 
         Título del producto
-        <input  type="text">
+        <input  name="title" type="text">
         </label>
 
         <label class=" form__label">
             Imagen del producto
-            <input type="text">
+            <input name="image" type="url">
         </label>
 
 
         <label class=" form__label">
             Precio del producto
-            <input type="number" >
+            <input name="price" type="number" >
         </label>
+
+        <button>
+            Guardar
+        </button>
 
     </form>
 

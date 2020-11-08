@@ -3,6 +3,7 @@ const products = [
       title: 'Pachira, árbol del dinero',
       img: 'https://d26lpennugtm8s.cloudfront.net/stores/331/296/products/web_habibi_pachira_buenasuerte4_regalosenmedellin_plantasenmedellin_plantas_domicilio_naturaleza1-9fedf344fce906b2b715932740215636-320-0.jpg',
       price: 75900,
+      // HACERLOOOOOOO tipe: 'planta con matera',
     },
     {
       title: 'Decobag Amarilla Con Planta',
@@ -69,8 +70,27 @@ const products = [
   
   
   
-  /*
+ 
   const form = document.querySelector('.form');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+
+    const newProduct = {
+      title: form.title.value,
+      img: form.image.value,
+      price: form.price.value
+    };
+
+    products.push(newProduct);
+    renderProducts(products);
+
+  
+ 
+  });
+  
+
+   /*
   form.addEventListener('submit', function (event) {
     event.preventDefault();
   
