@@ -109,7 +109,7 @@ function getProducts() {
     const objects = [];
     querySnapshot.forEach((doc) => {
       const obj = doc.data();
-      obj.id = obj.id;
+      obj.id = doc.id;
       objects.push(obj);
       console.log(`${doc.id} => ${doc.data()}`);
     });
@@ -162,36 +162,33 @@ form.addEventListener('submit', function (event) {
 
   loader.classList.add('loader--show');
 
+  function handleThen (docRef){
+    //console.log("Document written with ID: ", docRef.id);
+    getProducts();
+
+    form.title.value = '';
+    form.image.value = '';
+    form.price.value = '';
+    selectedItem=null;
+  }
+
+  function handleCatch (error) {
+    console.error("Error adding document: ", error);
+  }
+
   if (selectedItem) {
 
     //si existe seletedItem->Va a editar
-    productsRef.doc(selectedItem.id).set(newProduct).then(function (docRef) {
-      //console.log("Document written with ID: ", docRef.id);
-      getProducts();
-
-      form.title.value = '';
-      form.image.value = '';
-      form.price.value = '';
-      selectedItem=null;
+    productsRef.doc(selectedItem.id).set(newProduct).then(function (handleThen) {
+     
     })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
+      .catch(handleCatch) ;
 
   } else {
     //si no existe es porque es un nuevo producto
     productsRef.add(newProduct)
-      .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-        getProducts();
-
-        form.title.value = '';
-        form.image.value = '';
-        form.price.value = '';
-      })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
+      .then(handleThen) 
+      .catch(handleCatch);
 
 
   }
