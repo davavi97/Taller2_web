@@ -18,7 +18,9 @@ const db = firebase.firestore();
 
 const productsRef = db.collection("products");
 
-const loader=document.querySelector('.loader');
+const loader = document.querySelector('.loader');
+
+let selectedItem = null;
 
 
 
@@ -71,9 +73,9 @@ function renderProducts(list) {
 
     //aqui se ELIMINA el producto
     const deleteBtn = newProduct.querySelector('.product__delete');
-    deleteBtn.addEventListener('click',function(){
+    deleteBtn.addEventListener('click', function () {
       loader.classList.add('loader--show');
-      productsRef.doc(elem.id).delete().then(function() {
+      productsRef.doc(elem.id).delete().then(function () {
         console.log("Document successfully deleted!");
         getProducts(); //Traiga los productos cuando ya se elimino
       }).catch(function (error) {
@@ -82,14 +84,17 @@ function renderProducts(list) {
       });
 
     });
+
+    //al seleccionar el boton editar
     const editBtn = newProduct.querySelector('.product__edit');
-    editBtn.addEventListener('click',function(){
-      form.title.value=elem.title;
+    editBtn.addEventListener('click', function () {
+
+      form.title.value = elem.title;
+      form.image.value = elem.img;
+      form.price.value = elem.price;
+      selectedItem = elem;
 
     });
-
-
-
 
     productsList.appendChild(newProduct);
   });
@@ -156,18 +161,42 @@ form.addEventListener('submit', function (event) {
   };
 
   loader.classList.add('loader--show');
-  productsRef.add(newProduct)
-    .then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
+
+  if (selectedItem) {
+
+    //si existe seletedItem->Va a editar
+    productsRef.doc(selectedItem.id).set(newProduct).then(function (docRef) {
+      //console.log("Document written with ID: ", docRef.id);
       getProducts();
 
-      form.title.value='';
-      form.image.value='';
-      form.price.value='';
+      form.title.value = '';
+      form.image.value = '';
+      form.price.value = '';
+      selectedItem=null;
     })
-    .catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+
+  } else {
+    //si no existe es porque es un nuevo producto
+    productsRef.add(newProduct)
+      .then(function (docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        getProducts();
+
+        form.title.value = '';
+        form.image.value = '';
+        form.price.value = '';
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+
+
+  }
+
+
 
 
 });
