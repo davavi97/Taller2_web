@@ -57,27 +57,29 @@ const products = [
       <img class="product__img" src="${elem.img}" alt="">
         <h3 class="product__title">${elem.title}</h3>
         <p class="product__price">$ ${elem.price}</p>
-        <button> Eliminar </button>
+        <button class="product__delete"> Eliminar </button>
   
       `;
     
       productsList.appendChild(newProduct);
     });
+
+    deleteProducts();
   }
   
 //LEER DE FIRESTORE, visble
-var objets=[];
+var objects=[];
   function getProducts(){
    
     db.collection("products").get().then((querySnapshot) => {
-      objets.splice(0, objets.length);
+      objects.splice(0, objects.length);
       querySnapshot.forEach((doc) => {
           const obj =doc.data();
           obj.id = obj.id;
-          objets.push(obj);
+          objects.push(obj);
           console.log(`${doc.id} => ${doc.data()}`);
       });
-      renderProducts(objets);
+      renderProducts(objects);
 
 
   });
@@ -111,7 +113,7 @@ var objets=[];
   
   
   
- //Aqui es donde agregamos el producto
+ //Aqui es donde AGREGAMOS el producto
   const form = document.querySelector('.form');
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -138,4 +140,23 @@ var objets=[];
   
  
   });
+
+  //aqui se ELIMINA el producto
+  function deleteProducts(){
+    var deleteBtns=document.querySelectorAll('.product__delete');
+    //console.log(deleteBtns);
+    deleteBtns.forEach(function(btn, index){
+      btn.addEventListener('click',function(){
+        db.collection("products").doc(objects[index].id).delete().then(function() {
+          getProducts();
+
+          console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+      
+
+      });
+    });
+  }
   
