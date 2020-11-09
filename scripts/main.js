@@ -16,8 +16,11 @@ firebase.initializeApp(firebaseConfig);
 //REFERENCIA DEL FIREBASE
 const db = firebase.firestore();
 
-
 const productsRef = db.collection("products");
+
+const loader=document.querySelector('.loader');
+
+
 
 
 
@@ -62,12 +65,14 @@ function renderProducts(list) {
         <h3 class="product__title">${elem.title}</h3>
         <p class="product__price">$ ${elem.price}</p>
         <button class="product__delete"> Eliminar </button>
+        <button class="product__edit"> Editar </button>
   
       `;
 
     //aqui se ELIMINA el producto
     const deleteBtn = newProduct.querySelector('.product__delete');
     deleteBtn.addEventListener('click',function(){
+      loader.classList.add('loader--show');
       productsRef.doc(elem.id).delete().then(function() {
         console.log("Document successfully deleted!");
         getProducts(); //Traiga los productos cuando ya se elimino
@@ -77,6 +82,13 @@ function renderProducts(list) {
       });
 
     });
+    const editBtn = newProduct.querySelector('.product__edit');
+    editBtn.addEventListener('click',function(){
+      form.title.value=elem.title;
+
+    });
+
+
 
 
     productsList.appendChild(newProduct);
@@ -97,6 +109,7 @@ function getProducts() {
       console.log(`${doc.id} => ${doc.data()}`);
     });
     renderProducts(objects);
+    loader.classList.remove('loader--show');
 
 
   });
@@ -142,19 +155,19 @@ form.addEventListener('submit', function (event) {
     price: form.price.value
   };
 
+  loader.classList.add('loader--show');
   productsRef.add(newProduct)
     .then(function (docRef) {
       console.log("Document written with ID: ", docRef.id);
       getProducts();
+
+      form.title.value='';
+      form.image.value='';
+      form.price.value='';
     })
     .catch(function (error) {
       console.error("Error adding document: ", error);
     });
-
- 
-  //products.push(newProduct);
-  //renderProducts(products);
-
 
 
 });
