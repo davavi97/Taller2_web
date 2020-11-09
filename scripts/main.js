@@ -21,7 +21,7 @@ const productsRef = db.collection("products");
 
 
 
-
+/*
 const products = [
   {
     title: 'Pachira, árbol del dinero',
@@ -45,6 +45,7 @@ const products = [
     price: 19900,
   },
 ];
+*/
 
 const productsList = document.querySelector('.productslist');
 
@@ -67,15 +68,13 @@ function renderProducts(list) {
     //aqui se ELIMINA el producto
     const deleteBtn = newProduct.querySelector('.product__delete');
     deleteBtn.addEventListener('click',function(){
-      productsRef.doc(elem.id).delete().then(function () {
-      
-        getProducts();
-
+      productsRef.doc(elem.id).delete().then(function() {
         console.log("Document successfully deleted!");
+        getProducts(); //Traiga los productos cuando ya se elimino
       }).catch(function (error) {
         console.error("Error removing document: ", error);
-      });
 
+      });
 
     });
 
