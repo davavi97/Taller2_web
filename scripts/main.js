@@ -1,17 +1,4 @@
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDrJkH0hSZ0s2AvGT-H8Ja9a2NPmHrIqHQ",
-  authDomain: "taller2-web.firebaseapp.com",
-  databaseURL: "https://taller2-web.firebaseio.com",
-  projectId: "taller2-web",
-  storageBucket: "taller2-web.appspot.com",
-  messagingSenderId: "838195254932",
-  appId: "1:838195254932:web:20f39ebdecfe375ff9c681",
-  measurementId: "G-WGH7G5D0FF"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
 
 //REFERENCIA DEL FIREBASE
 const db = firebase.firestore();
@@ -164,7 +151,7 @@ console.log();
 
 var storageRef = firebase.storage().ref();
 
-var newImageRef = storageRef.child('mountains.jpg');
+var newImageRef = storageRef.child(`products/${Math.floor(Math.random()*1234)}.jpg`);
 
 var file =form.imageFile.files[0];
 newImageRef.put(file).then(function(snapshot){
