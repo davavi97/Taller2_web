@@ -644,6 +644,11 @@
           flex-direction: column;
 }
 
+.form__error {
+  color: #EDA48A;
+  font-weight: 600px;
+}
+
 .loader {
   display: none;
 }
@@ -664,5 +669,9 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */
