@@ -65,6 +65,43 @@
             <input name="price" type="number" >
         </label>
 
+
+    <!-- INPUTS CATEGORY-->
+        <!--
+        <select name="category">
+            <option value="plantwhit">Plantas con materas</option>
+            <option value="plant">Plantas</option>
+            <option value="kits">Kits y regalos</option>
+        </select>
+         -->
+
+         <div class="categoryInput">
+
+            <label >
+                <input type="radio" value="plantwhit" name="category1"/>
+                Planta con matera
+            </label>
+            <label>
+                <input type="radio" value="plant" name="category1"/>
+                Planta
+            </label>
+            <label>
+                <input type="radio" value="kits" name="category1"/>
+                Kits y regalos
+            </label>
+
+         </div>
+
+         <input type="file" name="imageFile">
+
+         </label>
+
+         <!--Checkbox-->
+        <label>
+            <input type="checkbox" name="delivery"/>
+            ¿Tiene envío gratis?
+        </label>
+
         <button>
             Guardar
         </button>
@@ -138,6 +175,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-storage.js"></script>
     <script src="./scripts/main.js"></script>
 
 </body>

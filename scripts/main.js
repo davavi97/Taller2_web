@@ -153,11 +153,33 @@ const form = document.querySelector('.form');
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
+ // console.log(form.category1.value);
+ // return;
+
+//checkbox
+console.log();
+
+
+//Storage
+
+var storageRef = firebase.storage().ref();
+
+var newImageRef = storageRef.child('mountains.jpg');
+
+var file =form.imageFile.files[0];
+newImageRef.put(file).then(function(snapshot){
+  console.log('Uploaded a blob or file');
+});
+
+
+return;
+
 
   const newProduct = {
     title: form.title.value,
     img: form.image.value,
-    price: form.price.value
+    price: form.price.value,
+    category:form.category.value
   };
 
   loader.classList.add('loader--show');
@@ -165,7 +187,6 @@ form.addEventListener('submit', function (event) {
   function handleThen (docRef){
     //console.log("Document written with ID: ", docRef.id);
     getProducts();
-
     form.title.value = '';
     form.image.value = '';
     form.price.value = '';
