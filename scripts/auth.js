@@ -2,6 +2,7 @@ const auth=document.querySelector('.auth');
 const authWhit=auth.querySelector('.auth__with');
 const authWhitout=auth.querySelector('.auth__without');
 const authProfileSpan=auth.querySelector('.auth__profile span');
+const authSignout = auth.querySelector('.auth__signout')
 
 //console.log(auth, authWhit, authWhitout);
 
@@ -20,33 +21,30 @@ firebase.auth().onAuthStateChanged(function(user) {
         const usersRef = db.collection('users'); 
         usersRef.doc(user.uid).get().then(function(doc){
             if(doc.exists){
-                const data=doc.data();
-                authProfileSpan.innerText =data.firstname;
+                const data = doc.data();
+                //console.log(doc.data());
+                authProfileSpan.innerText = data.firstname;
 
             }
+            
+
+            
             
         });
 
     } else {
     //si no existe quiere decir que inició sesión o se registró
     authWhit.classList.add('hidden');
-    authWhitout.classList.remove('hideen');
+    authWhitout.classList.remove('hidden');
 
     }
-    /*
-    if (user) {
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      // ...
-    } else {
-      // User is signed out.
-      // ...
-    }
-    */
+   
   });
+
+
+
+  authSignout.addEventListener('click', function(event){
+      event.preventDefault();
+      firebase.auth().signOut();
+  });
+

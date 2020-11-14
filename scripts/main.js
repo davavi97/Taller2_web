@@ -159,14 +159,13 @@ newImageRef.put(file).then(function(snapshot){
 });
 
 
-return;
 
 
   const newProduct = {
     title: form.title.value,
     img: form.image.value,
     price: form.price.value,
-    category:form.category.value
+    //category:form.category.value
   };
 
   loader.classList.add('loader--show');
