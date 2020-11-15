@@ -13,32 +13,6 @@ let selectedItem = null;
 
 
 
-/*
-const products = [
-  {
-    title: 'Pachira, árbol del dinero',
-    img: 'https://d26lpennugtm8s.cloudfront.net/stores/331/296/products/web_habibi_pachira_buenasuerte4_regalosenmedellin_plantasenmedellin_plantas_domicilio_naturaleza1-9fedf344fce906b2b715932740215636-320-0.jpg',
-    price: 75900,
-    // HACERLOOOOOOO tipe: 'planta con matera',
-  },
-  {
-    title: 'Decobag Amarilla Con Planta',
-    img: 'https://d26lpennugtm8s.cloudfront.net/stores/331/296/products/web_decobag_amarilla1-9bbb9e8460f87d4f8015850897130612-320-0.jpg',
-    price: 54800,
-  },
-  {
-    title: 'Decobag Beige Con Planta Purificadora',
-    img: 'https://d26lpennugtm8s.cloudfront.net/stores/331/296/products/web_habibi_decobag_beige_regalosmedellin_dimicilio_plantasadomicilio_ideasderegalo_cumpleanos_regalo_aniversario_plantasnaturales1-23028a12286802e8b715742671200894-320-0.jpg',
-    price: 54800,
-  },
-  {
-    title: 'Planta Miami Pothos',
-    img: 'https://d26lpennugtm8s.cloudfront.net/stores/331/296/products/web_habibi_miami_photosplant_plantaspurifcadoras_vivero_medellin_plantasadomicilio-4ceb14f622d0845ccf15646154418651-320-0.jpg',
-    price: 19900,
-  },
-];
-*/
-
 const productsList = document.querySelector('.productslist');
 
 
@@ -46,8 +20,13 @@ const productsList = document.querySelector('.productslist');
 function renderProducts(list) {
   productsList.innerHTML = '';
   list.forEach(function (elem) {
-    const newProduct = document.createElement('article');
+    const newProduct = document.createElement('a');
     newProduct.classList.add('product');
+
+    const url = `producto.html?${elem.id}-${elem.title}`;
+    newProduct.setAttribute('href',url);
+
+
 
     newProduct.innerHTML = `
       <img class="product__img" src="${elem.img}" alt="">
@@ -110,6 +89,8 @@ function getProducts() {
 
 getProducts();
 
+var imagePath='';
+
 // render inicial con todos los productos
 //renderProducts(products);
 
@@ -147,17 +128,6 @@ form.addEventListener('submit', function (event) {
 console.log();
 
 
-//Storage
-
-var storageRef = firebase.storage().ref();
-
-var newImageRef = storageRef.child(`products/${Math.floor(Math.random()*1234)}.jpg`);
-
-var file =form.imageFile.files[0];
-newImageRef.put(file).then(function(snapshot){
-  console.log('Uploaded a blob or file');
-});
-
 
 
 
@@ -166,6 +136,7 @@ newImageRef.put(file).then(function(snapshot){
     img: form.image.value,
     price: form.price.value,
     //category:form.category.value
+    storageImg : imagePath,
   };
 
   loader.classList.add('loader--show');
@@ -200,6 +171,24 @@ newImageRef.put(file).then(function(snapshot){
 
   }
 
+
+
+
+});
+
+form.imageFile.addEventListener('change', function(){
+  //Storage
+
+var storageRef = firebase.storage().ref();
+
+var newImageRef = storageRef.child(`products/${Math.floor(Math.random()*9999999)}.jpg`);
+
+var file =form.imageFile.files[0];
+newImageRef.put(file).then(function(snapshot){
+  console.log(snapshot);
+  console.log('Uploaded a blob or file');
+  imagePath=snapshot;
+});
 
 
 
