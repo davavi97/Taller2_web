@@ -43,6 +43,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 
+
+  //METODO PARA CERRAR SESION
   authSignout.addEventListener('click', function(event){
       event.preventDefault();
       firebase.auth().signOut();
