@@ -20,6 +20,10 @@
   background-color: #404040;
 }
 
+.footer--login {
+  margin-top: 450px;
+}
+
 .footer .footer__newsLetter {
   margin-top: 50px;
   display: -webkit-box;
@@ -857,5 +861,6 @@ body {
 
 .login {
   background-image: url("../img/main__background.png");
+  background-size: cover;
 }
 /*# sourceMappingURL=main.css.map */
