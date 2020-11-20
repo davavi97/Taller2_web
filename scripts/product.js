@@ -8,7 +8,11 @@ window.addEventListener('load', function(){
     //traer id del usuario
     var userData = JSON.parse(localStorage.getItem("userId"));
 
-    var userId = userData.id; 
+    //var userId = userData.id; 
+    if(userData!=null){
+      var userId = userData.id;
+
+    }
 
 
 
