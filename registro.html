@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style/main.css">
 </head>
-<body>
+<body class="login">
      <!-- HEADER -->
      <div class="header">
         <button class="mainheader__btn">
@@ -15,20 +15,18 @@
         <a class="header__logo" href="/"><img class="header__lavandaLogo" src="./img/LavandaLogo.png"
                 alt="Logo Lavanda"></a>
         <nav class="header__nav">
-            <a class="nav__home" href="/index.html">
+            <a class="nav__home" href=" ">
                 <p>Home</p>
             </a>
+            <a href="index.html" class="link" >
             <p>Productos</p>
-            <p>Materas</p>
-            <p>Ramos</p>
-            <p>Mi perfil</p>
+        </a>
+        <a href="carrito.html" class="link">
+            <p>Carrito</p>
+        </a>
 
         </nav>
-        <div class="header__cartSearch">
-            <img class="cartSearch__cart" src="./img/carrito.png" alt="Carrito de compras" height="30px" width="30px">
 
-            <img src="./img/buscar.png" class="cartSearch__search" alt="Buscar" height="30px" width="30px">
-        </div>
     </div>
 
 <!--REGISTRO-->
@@ -48,9 +46,17 @@
         </label>
 
         <label class="form__label">
-            Celular
-            <input required type="text" name="phone"/>
-        </label>
+            Dirección
+            <input required type="text" name="direction" />
+          </label>
+  
+  
+          <label class="form__label">
+            Tarjeta de crédito
+            <input required type="number" name="credit" />
+          </label>
+   
+
 
         <label class="form__label">
             Correo

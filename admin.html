@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="./style/main.css">
+</head>
+<body> 
+       <!-- HEADER -->
+       <div class="header">
+        <button class="mainheader__btn">
+            <img src="./Img/menuhamburguesa.png" alt="">
+        </button>
+        <a class="header__logo" href="/"><img class="header__lavandaLogo" src="./img/LavandaLogo.png"
+                alt="Logo Lavanda"></a>
+        <nav class="header__nav">
+            <a class="nav__home" href=" ">
+                <p>Home</p>
+            </a>
+            <a href="index.html" class="link" >
+            <p>Productos</p>
+        </a>
+        <a href="carrito.html" class="link">
+            <p>Carrito</p>
+        </a>
+  
+
+        </nav>
+        
+       </div>
+
+
+        <!--Producto-->
+
+            <main>
+                <p class="loader">Cargando...</p> 
+
+                <p >Todas las compras</p>
+
+                <section class="productslist">
+                </section>
+                
+            </main>
+
+     
+
+         <!-- FOOTER -->
+    <footer id="contacto" class="footer">
+
+        <section class="footer__newsLetter">
+            <img class="newsLetter__logo" src="./Img/LavandaFooter.png" alt="">
+
+            <p>Conoce a Lavanda </p>
+            <p>Proyectos</p>
+
+            <p> <strong> Suscríbete a nuestro newslatter </strong></p>
+            <p>Infórmate de lo último de Lavanda. Nuestras <br> ofertas y novedades directamente en tu <br> e-mail.</p>
+
+            <input class="footer__email" type="Tu Email">
+            <a href="#" class="footer__enviar">Enviar</a>
+
+        </section>
+
+        <section class="footer__ubication">
+            <p><strong>Ubicación</strong>
+            </p>
+            <p>Calle 18 No, Mall Plaza Pance #122-135, <br> Cali, Valle del Cauca
+            </p>
+            <p>Cra. 100 #5-169 local 193, Cali, Valle del <br> Cauca</p>
+
+        </section>
+
+        <section class="footer__products">
+            <p><strong>Productos</strong></p>
+            <p>Plantas</p>
+            <p>Materas</p>
+            <p>Ramos</p>
+            <p>Cursos</p>
+        </section>
+
+        <section class="footer__contact">
+            <p><strong>Contáctanos</strong></p>
+            <p>Servicio al cliente</p>
+            <p>Contacto directo</p>
+            <div class="contact__socialMedia">
+                <a href="#" class="socialMedia__fb"> <img src="./Img/facebook.png" alt=""></a>
+                <a href="#" class="socialMedia__insta"><img src="./Img/instagram.png" alt=""></a>
+            </div>
+        </section>
+    </footer>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+    <script src="./scripts/firebase.js"></script>
+    <script src="./scripts/admin.js"></script>
+  
+
+
+</body>
+
+</html>

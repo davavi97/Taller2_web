@@ -1,0 +1,15 @@
+
+  .btn{
+      background-color: #E1E7E3;
+    color: $primary-color;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 0px;
+    border: 0;
+    /*
+    @include btnModifier($primary-color);
+    width: 170px;
+    margin: auto;
+    */
+}

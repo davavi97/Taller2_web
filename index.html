@@ -18,69 +18,145 @@
         <a class="header__logo" href="/"><img class="header__lavandaLogo" src="./img/LavandaLogo.png"
                 alt="Logo Lavanda"></a>
         <nav class="header__nav">
-            <a class="nav__home" href="/index.html">
+            <a class="nav__home" href=" ">
                 <p>Home</p>
             </a>
+            <a href="index.html" class="link" >
             <p>Productos</p>
-            <p>Materas</p>
-            <p>Ramos</p>
-            <p>Mi perfil</p>
+        </a>
+        <a href="carrito.html" class="link">
+            <p>Carrito</p>
+        </a>
+            <a class="nav__perfil" href="/perfil.html"  style="text-decoration: none;">
 
+        </a>
         </nav>
-        <div class="header__cartSearch">
-            <img class="cartSearch__cart" src="./img/carrito.png" alt="Carrito de compras" height="30px" width="30px">
 
-            <img src="./img/buscar.png" class="cartSearch__search" alt="Buscar" height="30px" width="30px">
-        </div>
 
         <!--Inicar sesión-->
         <div class="auth">
             <div class="auth__without hidden">
-                <a href="/inicio-sesion.html">Iniciar sesión </a>
-                <a href="/registro.html">Regístrate</a>
+                <a href="/inicio-sesion.html" class="link">Iniciar sesión </a>
+                <a href="/registro.html" class="link">Regístrate</a>
             </div>
             <div class="auth__with hidden">
-                <a href="/perfil.html" class="auth__profile">
+                <a href="/perfil.html" class="auth__profile link" >
                 <img src="" alt="">
                 <span></span>
                 </a>
-                <a href="#" class="auth__signout">Cerrar sesión</a>
+                <a href="#" class="auth__signout link">Cerrar sesión</a>
             </div>
-
-       
+    </div>
+    <div>
+        <a  class="adminview hidden showadmin" href="admin.html">Administrador</a>
     </div>
    
     </div>
+    <article class="info" >
 
+    <aside >
+        <form class="filterform">
+            <label>
+                Ordenar por:
+                <select name="order">
+                  <option value="">Selecciona una opción</option>
+                  <option value="price_asc">Precio menor a mayor</option>
+                  <option value="price_desc">Precio mayor a menor</option>
+                  <option value="alfabeticA">A-Z</option>
+                  <option value="alfabeticZ">Z-A</option>
+                </select>
+              </label>
+        
+              <h4>Filtrar por tipo de tierra:</h4>
+              <div class="labels">
+              <label>
+                <input type="radio" name="soil" value="" checked>
+                Todos
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="soil" value="Abonada para plantas">
+                Abonada para plantas
+              </label>
+              <br>  
+              <label>
+                <input type="radio" name="soil" value="Abonada para Anturias y Orquideas">
+                Abonada para Anturias y Orquideas
+              </label>
+            </div>
+        
+              <h4>Filtrar por recipiente:</h4>
+              <label>
+                <input type="radio" name="container" value="" checked>
+                Todos
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="container" value="Ecobag">
+                Ecobag
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="container" value="Matera">
+                Matera
+              </label>
+        
+              <h4>Filtrar por tipo de planta:</h4>
+              <label>
+                <input type="radio" name="plant" value="" checked>
+                Todos
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="plant" value="Purificadoras">
+                Purificadoras
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="plant" value="Suculentas">
+                Suculentas
+              </label>
+         
+        </form>
+      </aside>
+    
     <!-- PRODUCTS -->
 
     <p class="loader">Cargando...</p>
-    <aside>
+ 
+   
 
-    </aside>
+
+
 
     <section class="productslist">
 
     </section>
+</article>
 
-    <button class="filterbtn">Filtrar</button>
+
        <!-- formulario aquí -->
-    <form class="form" action="" method="">
+    <form class="form hidden showadmin" action="" method="">
         <h2 class="form__title">Nuevo producto</h2>
         <label class=" form__label"> 
         Título del producto
         <input  name="title" type="text">
         </label>
-
+<!--
         <label class=" form__label">
             Imagen del producto
             <input name="image" type="url">
         </label>
 
-
+-->
         <label class=" form__label">
             Precio del producto
             <input name="price" type="number" >
+        </label>
+
+        <label class=" form__label">
+            Detalles del producto
+            <input name="details" type="text" >
         </label>
 
 
@@ -92,23 +168,32 @@
             <option value="kits">Kits y regalos</option>
         </select>
          -->
+         <label class="form__label">
+            Tipo de tierra 
+            <select name="soil" class="form__label">
+              <option value="">Selecciona</option> 
+              <option value="Abonada para plantas">Abonada para plantas</option> 
+              <option value="Abonada para Anturias y Orquideas">Abonada para Anturias y Orquideas</option>
+            </select>
+          </label>
+          <label class="form__label">
+            Recipiente
+            <select name="container" class="form__label">
+              <option value="">Selecciona</option> 
+              <option value="Ecobag">Ecobag</option> 
+              <option value="Matera">Matera</option>
+            </select>
+          </label>
+          <label class="form__label">
+            Tipo de planta
+            <select name="plant" class="form__label">
+              <option value="">Selecciona</option> 
+              <option value="Purificadoras">Purificadoras</option> 
+              <option value="Suculentas">Suculentas</option>
+            </select>
+          </label>
 
-         <div class="categoryInput">
-
-            <label >
-                <input type="radio" value="plantwhit" name="category1"/>
-                Planta con matera
-            </label>
-            <label>
-                <input type="radio" value="plant" name="category1"/>
-                Planta
-            </label>
-            <label>
-                <input type="radio" value="kits" name="category1"/>
-                Kits y regalos
-            </label>
-
-         </div>
+      
 
          <input type="file" name="imageFile">
 

@@ -7,20 +7,35 @@ const productsRef = db.collection("products");
 
 const loader = document.querySelector('.loader');
 
+const adminview =document.querySelector('.adminview')
+
 let selectedItem = null;
 
 
-
+var storageRef = firebase.storage().ref();
 
 
 const productsList = document.querySelector('.productslist');
+
+var userData = JSON.parse(localStorage.getItem("userId"));
+
+if(userData!=null){
+  var userId = userData.id;
+}
+
+
+
+
+
+
+
 
 
 // creación de nuevos productos a partir de la lista
 function renderProducts(list) {
   productsList.innerHTML = '';
   list.forEach(function (elem) {
-    const newProduct = document.createElement('a');
+    const newProduct = document.createElement('div');
     newProduct.classList.add('product');
 
     const url = `producto.html?${elem.id}-${elem.title}`;
@@ -29,13 +44,31 @@ function renderProducts(list) {
 
 
     newProduct.innerHTML = `
+    <a href="${url}" class="link">
       <img class="product__img" src="${elem.img}" alt="">
+      <div class="product__info">
         <h3 class="product__title">${elem.title}</h3>
         <p class="product__price">$ ${elem.price}</p>
-        <button class="product__delete"> Eliminar </button>
-        <button class="product__edit"> Editar </button>
+        </div>
+        </a>
+        <button class="product__delete hidden showadmin"> Eliminar </button>
+        <button class="product__edit hidden showadmin"> Editar </button>
   
       `;
+
+      if(elem.storageImg) {
+        storageRef.child(elem.storageImg).getDownloadURL().then(function(url) {
+          // Or inserted into an <img> element:
+          var img = newProduct.querySelector('img');
+          img.src = url;
+        }).catch(function(error) {
+          // Handle any errors
+        });
+     
+    }   
+
+
+
 
     //aqui se ELIMINA el producto
     const deleteBtn = newProduct.querySelector('.product__delete');
@@ -56,7 +89,7 @@ function renderProducts(list) {
     editBtn.addEventListener('click', function () {
 
       form.title.value = elem.title;
-      form.image.value = elem.img;
+      //form.image.value = elem.img;
       form.price.value = elem.price;
       selectedItem = elem;
 
@@ -69,17 +102,17 @@ function renderProducts(list) {
 
 
 //LEER DE FIRESTORE, visible
-
+let objectsList
 function getProducts() {
   productsRef.get().then((querySnapshot) => {
-    const objects = [];
+     objectsList = [];
     querySnapshot.forEach((doc) => {
       const obj = doc.data();
       obj.id = doc.id;
-      objects.push(obj);
+      objectsList.push(obj);
       console.log(`${doc.id} => ${doc.data()}`);
     });
-    renderProducts(objects);
+    renderProducts(objectsList);
     loader.classList.remove('loader--show');
 
 
@@ -96,7 +129,7 @@ var imagePath='';
 
 
 const filterBtn = document.querySelector('.filterbtn');
-
+/*
 filterBtn.addEventListener('click', function () {
   // función slice para tomar una sección de la lista
   // const filtered = products.slice(1, 3);
@@ -113,7 +146,7 @@ filterBtn.addEventListener('click', function () {
   // render solo con los productos filtrados
   renderProducts(filtered);
 });
-
+*/
 
 
 //Aqui es donde AGREGAMOS el producto
@@ -133,8 +166,12 @@ console.log();
 
   const newProduct = {
     title: form.title.value,
-    img: form.image.value,
+    //img: form.image.value,
     price: form.price.value,
+    details: form.details.value,
+    soil: form.soil.value,
+    container:form.container.value,
+    plant:form.plant.value,
     //category:form.category.value
     storageImg : imagePath,
   };
@@ -145,7 +182,7 @@ console.log();
     //console.log("Document written with ID: ", docRef.id);
     getProducts();
     form.title.value = '';
-    form.image.value = '';
+    //form.image.value = '';
     form.price.value = '';
     selectedItem=null;
   }
@@ -179,19 +216,86 @@ console.log();
 form.imageFile.addEventListener('change', function(){
   //Storage
 
-var storageRef = firebase.storage().ref();
 
-var newImageRef = storageRef.child(`products/${Math.floor(Math.random()*9999999)}.jpg`);
+
+var newImageRef = storageRef.child(`products/${Math.floor(Math.random()*9999999)}.png`);
 
 var file =form.imageFile.files[0];
 newImageRef.put(file).then(function(snapshot){
   console.log(snapshot);
   console.log('Uploaded a blob or file');
-  imagePath=snapshot;
+  imagePath=snapshot.metadata.fullPath;
 });
 
 
 
+});
+
+//filtros
+const filterForm = document.querySelector('.filterform');
+filterForm.addEventListener('input', function() {
+
+  let copy = objectsList.slice();
+
+  const order = filterForm.order.value;
+  switch(order){
+    case 'price_asc':
+      copy.sort(function(a, b){
+        return a.price - b.price;
+      });
+      break;
+    case 'price_desc':
+      copy.sort(function(a, b){
+        return b.price - a.price;
+      });
+      break;
+      case 'alfabeticA':
+          copy.sort(function (a, b) {
+            return a.title.localeCompare(b.title);
+          });
+          break;
+
+          case 'alfabeticZ':
+            copy.sort(function (a, b) {
+              return b.title.localeCompare(a.title);
+            });
+            break;
+  }
+
+  const soilFilter = filterForm.soil.value;
+  if(soilFilter != '') {
+    copy = copy.filter(function(elem){
+      if(elem.soil===soilFilter) {
+        return true;
+      }
+      return false;
+    });
+  }
+
+
+  const containerFilter = filterForm.container.value;
+  if(containerFilter != '') {
+    copy = copy.filter(function(elem){
+      if(elem.container===containerFilter) {
+        return true;
+      }
+      return false;
+    });
+  }
+
+  const plantFilter = filterForm.plant.value;
+  if(plantFilter != '') {
+    copy = copy.filter(function(elem){
+      if(elem.plant===plantFilter) {
+        return true;
+      }
+      return false;
+    });
+  }
+ 
+
+
+  renderProducts(copy);
 });
 
 

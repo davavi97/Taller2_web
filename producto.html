@@ -15,33 +15,44 @@
         <a class="header__logo" href="/"><img class="header__lavandaLogo" src="./img/LavandaLogo.png"
                 alt="Logo Lavanda"></a>
         <nav class="header__nav">
-            <a class="nav__home" href="/index.html">
+            <a class="nav__home" href=" ">
                 <p>Home</p>
             </a>
+            <a href="index.html" class="link" >
             <p>Productos</p>
-            <p>Materas</p>
-            <p>Ramos</p>
-            <p>Mi perfil</p>
+        </a>
+        <a href="carrito.html" class="link">
+            <p>Carrito</p>
+        </a>
+
 
         </nav>
-        <div class="header__cartSearch">
-            <img class="cartSearch__cart" src="./img/carrito.png" alt="Carrito de compras" height="30px" width="30px">
-
-            <img src="./img/buscar.png" class="cartSearch__search" alt="Buscar" height="30px" width="30px">
+        
         </div>
-       </div>
+
 
 
         <!--Producto-->
 
             <main>
-                <article class="details hidden">
-                <img src="https://d26lpennugtm8s.cloudfront.net/stores/331/296/products/web_habibibig_plantaspurificadoras_syngonium_opcionesderegalo_plantasadomicilio_regalosenmedellin_naturaleza_bienestar1-fcc97e9253b702ef8915939167672604-320-0.jpg"/>
+                <a href="index.html" class="link"> 
+                <p> < Volver</p>
+                 </a>
+                <article class="details hidden" >
+               
+                <img class="details__img" src=""/>
                 
-                <h1>El producto</h1>
-                <h2>Precio: <span>$678998</span></h2>
-
+                <section class="details__info">
+                <h1 class="details__title">El producto</h1>
+                <h2 class="details__price">Precio: $<span>cargando</span></h2>
+                <p class="details__text"></p>
+                <!--
+                <button class="btn">Comprar ahora</button>
+                -->
+                <button class="btn">Agregar a carrito</button>
+            </section>
                 </article>
+                
                 
             </main>
 
@@ -100,6 +111,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
     <script src="./scripts/firebase.js"></script>
     <script src="./scripts/product.js"></script>
   

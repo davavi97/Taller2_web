@@ -1,0 +1,35 @@
+.carlist {
+  border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    display: flex;
+    padding: 10px 15%;
+    background-color: #ffffff;
+  
+    &__img {
+      width: 100px;
+      height: 100px;
+      //object-fit: contain;
+      padding: 10px;
+      margin-right: 20px;
+     // border: 1px solid gray;
+      border-radius: 25px;
+    }
+    &__title {
+      margin-top: 0px;
+      font-weight: lighter;
+
+    }
+    &__price {
+        margin-top: 50px;
+        font-weight: bold;
+        font-size: larger;
+  
+    }
+    &__info{
+      display: block;
+
+    }
+
+    
+  }
+

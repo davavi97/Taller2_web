@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-
+$primary-color: #8AA093;
+$secondary-color:#404040;
 
 @import 'footer';
 @import 'header';
 @import 'store';
 @import 'products';
+@import 'productlist';
+@import 'details';
+@import 'btn';
+@import 'carlist';
+
 
 
 
@@ -16,4 +22,16 @@ body{
 
 .hidden{
     display: none;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+   
+}
+.link:visited{
+    color:black;
+}
+.login{
+    background-image: url("../img/main__background.png");
 }

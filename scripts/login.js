@@ -4,9 +4,10 @@ const usersRef = db.collection('users');
 */
 
 
-const login = document.querySelector('.login');
+const login = document.querySelector('.logins');
 
 login.addEventListener('submit', function(event){
+
     event.preventDefault();
 
     const email = login.email.value;
@@ -35,4 +36,3 @@ login.addEventListener('submit', function(event){
       });
 
 });
-

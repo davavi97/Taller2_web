@@ -1,0 +1,55 @@
+.productslist{
+    //background-color: rgb(57, 110, 4);
+    margin: 0% 5%  ;
+
+   // background-color: aqua;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+
+
+    &--car{
+
+        //background-color: cadetblue;
+        display: block;
+        //border-bottom: 1px solid rgb(255, 1, 1);
+        //display: flex;
+        //padding: 10px 15%;
+        background-color: #ff1f1f;
+        margin: 0% 0%  ;
+
+       
+        
+
+    }
+
+}
+
+@media screen and (max-width: 900px){
+
+    .productslist{
+        //background-color: rgb(57, 110, 4);
+        margin: 0% 5%  ;
+    
+       // background-color: aqua;
+        display: flex;
+        overflow: hidden;
+        flex-wrap: wrap;
+    
+    
+        &--car{
+    
+            //background-color: cadetblue;
+            display: block;
+            //border-bottom: 1px solid rgb(255, 1, 1);
+            //display: flex;
+            //padding: 10px 15%;
+            background-color: #ff1f1f;
+            margin: 0% 0%  ;
+
+        }
+    
+    }
+
+    
+}

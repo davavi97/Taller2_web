@@ -1,55 +1,104 @@
-  .product{
+.product{
 
-    width: 20%;
-    margin: 10px;
-    position: relative;
-    text-align: center;
-    
+  width: 20%;
+  margin: 10px;
+  position: relative;
+  text-align: center;
+  
 
-    &__img{
-        border-radius: 1px;
+  &__img{
+      border-radius: 1px;
 
 
-        &__addBtn{
-            position: absolute;
-            right: 7px;
-            bottom: 5px;
-        }
+      &__addBtn{
+          position: absolute;
+          right: 7px;
+          bottom: 5px;
+      }
 
-    }
+  }
 
-    &__title{
-        font-weight: 200;
-        font-size: 17px;
-        margin-top: 0px;
-    
-    }
+  &__title{
+      font-weight: 200;
+      font-size: 17px;
+      margin-top: 0px;
+  
+  }
 
-    &__price{
-        font-size: 15px;
-        font-weight: 200;
-       
+  &__price{
+      font-size: 15px;
+      font-weight: 200;
+     
 
-    }
+  }
 }
-  
-  
-  .form {
+
+
+.form {
+ 
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 30px;
+  margin:  auto ;
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__label {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 30px;
-    margin-top: 30px;
-  
-    &__title {
-      margin-top: 0;
-    }
-  
-    &__label {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-    }
+    margin-bottom: 20px;
   }
+
+
+}    
+
+
+.filterform{
+
+  //background-color: #eeeeee;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 5px -2px 5px rgb(243, 243, 243);
+  .labels{
+   // width: 20%;
+    display: block;
+    flex-wrap: wrap;
+    //background-color: chocolate;
+  }
+}
+.info{
+  padding: 50px 0px;
+  display: flex;
+}
+
+.totalText{
+  font-weight: bolder;
+  font-size: large;
+}
+
+.infoCheckout{
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  //box-shadow: 5px -2px 5px rgb(243, 243, 243);  
+  //background-color: chocolate;
+}
+
+@media screen and (max-width: 900px){
+
+  .info{
+    display: block;
+  }
+
+  .form{
+    //background-color: lawngreen;
+  }
+
+ 
+
+}
